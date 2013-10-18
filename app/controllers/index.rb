@@ -41,11 +41,9 @@ post '/create_new_survey' do
   erb :generate_questions
 end
 
-
 get '/create_new_survey' do 
   erb :create_new_survey
 end
-
 
 post '/add_question' do
   @question = Question.create(survey_id: params[:survey_id], content: params[:question] )
