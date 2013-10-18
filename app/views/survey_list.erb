@@ -1,3 +1,7 @@
 <div class="container">
 <h1>Welcome <%= @user.name %></h1>
+<h3>Take a survey...</h3>
+<% @all_surveys.each do |x| %>
+<a href="/take_survey/<%= x.id %>"><%= x.name %></a>
+<% end %> 
 </div>

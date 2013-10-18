@@ -13,7 +13,7 @@ post '/log_in' do
   if @user && @user.authenticate(params[:password])
     session[:user_id] = @user.id
     session[:name] = @user.name
-    erb :survey_list
+    redirect to('/survey_list')
   else
     redirect to '/'
   end 
@@ -26,11 +26,14 @@ end
 
 post '/sign_up' do
   @user = User.create(name: params[:name], password: params[:password], password_confirmation: params[:password], email: params[:email])
+      @all_surveys = Survey.all 
 
-  erb :survey_list
+  redirect to('/survey_list')
 end
 
 get '/survey_list' do
+  @all_surveys = Survey.all 
+  @user = User.find(session[:user_id])
   erb :survey_list 
 end
 
@@ -63,7 +66,24 @@ get '/finished_survey/:survey_id' do
   erb :finished_survey
 end
 
-# get '/take_survey' do 
-#   erb take_survey
-# end
+get '/take_survey/:id' do 
+  @survey = Survey.find(params[:id])
+  erb :take_survey
+end
+
+post '/submit_survey' do
+  # binding.pry
+  params.each do |key,value| 
+    @choice = Choice.where(question_id: key, answer: value)
+   Response.create(user_id: session[:user_id], choice_id: @choice.first.id)
+   redirect to('/your_answers')
+  end
+end
+
+get '/your_answers' do
+  @user = User.find(session[:user_id])
+  @responses = Response.where(user_id: @user.id)
+  binding.pry
+  erb :your_answers
+end
 
