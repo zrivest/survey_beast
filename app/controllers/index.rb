@@ -1,21 +1,39 @@
+enable :sessions
+require 'pry'
+
 get '/' do
-  # Look in app/views/index.erb
+  # session.clear
   erb :index
 end
 
-post '/login' do
-  # if success redirect to '/survey_list' 
-  # else redirect to '/'' 
+post '/log_in' do
+  @user = User.find_by_email(params[:email])
+
+  # binding.pry
+  if @user && @user.authenticate(params[:password])
+    session[:user_id] = @user.id
+    
+    erb :survey_list
+  else
+    redirect to '/'
+  end 
 end
 
-# post '/sign_up' do
-#   # if success redirect to '/survey_list' 
-#   # else redirect to '/''
-# end
+post '/sign_up' do
+  user = User.new(params[:user])
+  user.password = params[:password]
 
-# get '/survey_list' do
-#   erb :survey_list 
-# end
+  if user.save
+    session[:user_id] = user.id
+    redirect to '/survey_list'
+  else
+    redirect to '/'
+  end
+end
+
+get '/survey_list' do
+  erb :survey_list 
+end
 
 # post '/creat_new_survey'
 #   #this button will redirect to the create_new_survey_page 
