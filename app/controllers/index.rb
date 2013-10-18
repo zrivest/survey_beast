@@ -12,23 +12,22 @@ post '/log_in' do
   # binding.pry
   if @user && @user.authenticate(params[:password])
     session[:user_id] = @user.id
-    
+    session[:name] = @user.name
     erb :survey_list
   else
     redirect to '/'
   end 
 end
 
-post '/sign_up' do
-  user = User.new(params[:user])
-  user.password = params[:password]
+get '/logout' do
+  session.clear
+  redirect to('/')
+end
 
-  if user.save
-    session[:user_id] = user.id
-    redirect to '/survey_list'
-  else
-    redirect to '/'
-  end
+post '/sign_up' do
+  @user = User.create(name: params[:name], password: params[:password], password_confirmation: params[:password], email: params[:email])
+
+  erb :survey_list
 end
 
 get '/survey_list' do
