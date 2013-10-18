@@ -35,22 +35,33 @@ get '/survey_list' do
   erb :survey_list 
 end
 
-# post '/creat_new_survey'
-#   #this button will redirect to the create_new_survey_page 
-# end
+post '/create_new_survey' do
+  @title = params[:title]
+  @survey = Survey.create(name: @title, user_id: 1 )# needs to be SESSION ID LATER!!!!
+  erb :generate_questions
+end
 
 
-# get '/create_new_survey' do 
-#   erb :create_new_survey
-# end
+get '/create_new_survey' do 
+  erb :create_new_survey
+end
 
-# post '/add_question' do
-#   #redirect to create_new_survey page to add another question. 
-# end
 
-# post '/finish_survey' do
-#   #redirect to the survey_list 
-# end
+post '/add_question' do
+  @question = Question.create(survey_id: params[:survey_id], content: params[:question] )
+  Choice.create(question_id: @question.id, answer: params[:choice1])
+  Choice.create(question_id: @question.id, answer: params[:choice2])
+  Choice.create(question_id: @question.id, answer: params[:choice3])
+  @survey = Survey.find(params[:survey_id])
+  @title = @survey.name
+  erb :generate_questions
+
+end
+
+get '/finished_survey/:survey_id' do
+  @survey = Survey.find(params[:survey_id])
+  erb :finished_survey
+end
 
 # get '/take_survey' do 
 #   erb take_survey
