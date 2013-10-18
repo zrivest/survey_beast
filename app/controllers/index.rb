@@ -40,10 +40,10 @@ post '/create_new_survey' do
   erb :generate_questions
 end
 
-
 get '/create_new_survey' do 
   erb :create_new_survey
 end
+
 
 
 post '/add_question' do
@@ -56,6 +56,7 @@ post '/add_question' do
   erb :generate_questions
 
 end
+
 
 get '/finished_survey/:survey_id' do
   @survey = Survey.find(params[:survey_id])
