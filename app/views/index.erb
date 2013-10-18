@@ -1,11 +1,20 @@
 <div class="container">
   <h1>Welcome to Survey Beast!</h1>
 
-  <form id=
+<h2>LOG IN HERE...</h2>
+<%= @error_log_in if @error_log_in %>
+  <form id="log_in" action="/log_in" method="post">
+    <input type="email" name="email" placeholder="Email">
+    <input type="password" name="password" placeholder="password">
+    <div class="submit"><input type="submit" value="Log In">
+  </form>
 
-  <form id="login" action="/login" method="post">
+<h2>SIGN UP HERE...</h2>
+<%= @error_sign_up if @error_sign_up %>
+  <form id="sign_up" action="/sign_up" method="post">
     <input type="text" name="name" placeholder="Your name"><br>
     <input type="email" name="email" placeholder="Your email"><br>
     <input type="password" name="password" placeholder="Your password"><br>
-  </form>
+    <div class="submit"><input type="submit" value="Sign up">
+  </form>  
 </div>  
