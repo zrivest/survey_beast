@@ -1,0 +1,15 @@
+<div class="container">
+  <h2>You just created....</h2>
+ Survey Title: <%= @survey.name %><br/>
+  <ol>
+
+ <% @survey.questions.each do |x| %>
+ <li><%= x.content %></li>
+    <ul>
+ <% x.choices.each do |y| %>
+ <li><%= y.answer %></li>
+ <% end %>
+</ul>
+ <% end %>
+</ol>
+</div>
