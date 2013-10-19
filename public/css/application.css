@@ -1,7 +1,11 @@
 .container {
   margin: 20px auto;
+  margin-top:20px;
   width: 900px;
-  padding: 0px 20px 20px 20px;
+  padding:20px;
+  border-radius:5px;
+  line-height:25px;
+
 }
 th {
   text-align: left;
@@ -18,6 +22,132 @@ header {
 header a {
   text-decoration:none;
   color:white;
-  padding:10px;
+  padding:10px 0px;
   float:right;
+  padding-left:20px;
+}
+
+header a:hover {
+  color:green;
+}
+
+#logo {
+  float:left;
+  font-size:30px;
+  letter-spacing:1.5px;
+  color:#e8e8e8;
+  text-shadow:0px 0px 5px #e8e8e8;
+  padding-left:0px;
+}
+
+body {
+  background-color:#e8e8e8;
+  font-family:sans-serif;
+  color:#474747;
+}
+
+.container > a {
+  text-decoration:none;
+  color:grey;
+  letter-spacing:1.5px;
+  font-weight:bold;
+}
+
+.container > a:hover {
+  color:green;
+}
+
+.container > h1 {
+  color:green;
+  text-shadow:0px 0px 10px #e8e8e8;
+  letter-spacing:2px;
+}
+
+#take_survey{
+  border: solid gray 3px;
+  border-radius: 10px;
+  padding: 10px;
+  position:relative;
+}
+
+#take_survey ol {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+
+}
+
+
+#take_survey input {
+  margin-right: 10px;
+
+}
+
+table tr {
+  background-color:#a0a0a0;
+  color:#474747;
+
+
+}
+
+table tr:nth-child(odd) {
+  background-color:#c8c8c8;
+  color:#474747;
+
+}
+
+table th {
+  background-color:#e8e8e8;
+  color:#474747;
+  padding:20px 0px ;
+}
+
+table td {
+  padding:5px;
+  width:300px;
+}
+
+#log_in {
+ position:absolute;
+ background-color:Black;
+ top:50px;
+ right:100px;
+ padding:20px;
+display:none;
+}
+
+#log_in input {
+  float:left;
+  margin-right:20px;
+}
+
+#sign_up {
+  line-height:40px;
+  background-color:black;
+  padding:20px;
+}
+
+#sign_up input {
+  padding:5px 10px;
+  color:green;
+}
+
+#content {
+  width:100%;
+  height:auto;
+  background-color:white;
+  padding:20px;
+  border-radius:5px;
+  box-shadow:0px 0px 20px grey;
+}
+
+#content a{
+  text-decoration:none;
+  color:green;
+  font-size:23px;
+}
+
+#content ul {
+  line-height:30px;
+
 }

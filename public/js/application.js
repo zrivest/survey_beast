@@ -1,7 +1,30 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+  $("#login_form").click(function(e) {
+    e.preventDefault();
+    console.log("working?");
+    $("#log_in").slideToggle();
+  });
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+
+    $("#create_survey").click(function(e){
+    e.preventDefault();
+    $.get('/create_new_survey',function(response){
+      $("#content").hide();
+      $("#content").html(response);
+      $("#content").show(response);
+    });
+  });
+
+
+  $("#survey_title_form").submit(function(e){
+    e.preventDefault();
+    $.post('/cr eate_new_survey',function(response){
+      $("#content").hide();
+      $("#content").html(response);
+      $("#content").show(response);
+    });
+  });
+
 });
+
+

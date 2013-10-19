@@ -1,3 +1,7 @@
 <div class="container">
-  <%= @responses.id %>
+<h3>Your answers</h3>
+<% @responses.each do |x| %>
+<% @choices = Choice.find(x.choice_id) %>
+<%= @choices.answer %><br/>
+<% end %>
 </div>

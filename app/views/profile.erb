@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>Your surveys</h1>
+  <div id="content">
+  <% @user_surveys.each do |x| %>
+  <a href="/results/<%= x.id %>"><%= x.name %></a><br/>
+  <% end %><br/>
+  <a id="create_survey" href="/create_new_survey">Create New Survey</a>
+</div>
+</div>

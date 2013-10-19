@@ -19,10 +19,15 @@
 </head>
 <body>
   <header>
+    <div style="width:940px;text-align:center;margin:auto">
+    <a id ="logo" href="/survey_list">surveyBEAST</a>
    <% if session[:user_id] %> 
     <a href="/logout">Log out</a>
-     <a href="/profile"> <%= session[:name] %></a>
+     <a style="color:green" href="/profile"><span style="color:white">Signed in as</span> <%= session[:name] %></a>
+     <% else %>
+     <a href="#" id="login_form">Log in</a>
       <% end %>
+    </div>
   </header>
   <%= yield %>
 </body>

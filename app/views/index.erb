@@ -1,20 +1,22 @@
 <div class="container">
-  <h1>Welcome to Survey Beast!</h1>
+  <h1>Welcome to surveyBEAST!</h1>
 
 <%= @error_log_in if @error_log_in %>
-
-<h2>LOG IN HERE...</h2>
   <form id="log_in" action="/log_in" method="post">
     <input type="email" name="email" placeholder="Email">
     <input type="password" name="password" placeholder="password">
-    <div class="submit"><input type="submit" value="Log In">
+    <input type="submit" value="Log In">
   </form>
 
 <h2>SIGN UP HERE...</h2>
   <form id="sign_up" action="/sign_up" method="post">
+        <img style="float:right;height:200px;width:200px" src=http://images.wikia.com/disney/images/d/dc/Beautyandthebeast.gif />
+
     <input type="text" name="name" placeholder="Your name"><br>
     <input type="email" name="email" placeholder="Your email"><br>
     <input type="password" name="password" placeholder="Your password"><br>
     <div class="submit"><input type="submit" value="Sign up">
+      <div style="clear:both"></div>
   </form>  
 </div>  
+

@@ -27,7 +27,8 @@ end
 post '/sign_up' do
   @user = User.create(name: params[:name], password: params[:password], password_confirmation: params[:password], email: params[:email])
       @all_surveys = Survey.all 
-
+    session[:user_id] = @user.id
+    session[:name] = @user.name
   redirect to('/survey_list')
 end
 
@@ -39,12 +40,12 @@ end
 
 post '/create_new_survey' do
   @title = params[:title]
-  @survey = Survey.create(name: @title, user_id: 1 )# needs to be SESSION ID LATER!!!!
+  @survey = Survey.create(name: @title, user_id: session[:user_id] )# needs to be SESSION ID LATER!!!!
   erb :generate_questions
 end
 
 get '/create_new_survey' do 
-  erb :create_new_survey
+  erb :create_new_survey,  :layout => false
 end
 
 
@@ -60,6 +61,12 @@ post '/add_question' do
 
 end
 
+get '/profile' do
+  @user = User.find(session[:user_id])
+  @user_surveys = @user.surveys
+  erb :profile
+end
+
 
 get '/finished_survey/:survey_id' do
   @survey = Survey.find(params[:survey_id])
@@ -68,22 +75,31 @@ end
 
 get '/take_survey/:id' do 
   @survey = Survey.find(params[:id])
+  session[:survey_id] = @survey.id
   erb :take_survey
 end
 
 post '/submit_survey' do
-  # binding.pry
+  CompletedSurvey.create(survey_id: session[:survey_id], user_id: session[:user_id])
   params.each do |key,value| 
     @choice = Choice.where(question_id: key, answer: value)
    Response.create(user_id: session[:user_id], choice_id: @choice.first.id)
-   redirect to('/your_answers')
+
   end
+     redirect to('/your_answers')
+
 end
 
 get '/your_answers' do
   @user = User.find(session[:user_id])
-  @responses = Response.where(user_id: @user.id)
-  binding.pry
+
+  @responses = @user.responses.last(3)
   erb :your_answers
+end
+
+get '/results/:survey_id' do
+  @survey = Survey.find(params[:survey_id])
+  @number_taken = CompletedSurvey.where(survey_id: @survey.id).length
+  erb :results
 end
 

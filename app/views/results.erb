@@ -1,0 +1,16 @@
+<div class="container">
+<h1>Results for "<%= @survey.name %>"</h1>
+<h3>Number Completed: <span style="color:green"><%= @number_taken %></span></h3>
+<table>
+<% @survey.questions.each do |question| %>
+ <th>Question: <%= question.content %></th>
+    <% question.choices.each do |choice| %>
+    <tr>
+
+      <td><%= choice.answer %></td>
+      <td> <span style="color:green;float:right"> <%= (((Response.where(choice_id: choice.id).length).to_f / @number_taken).to_f) * 100 %> %</span> </td>
+    </tr>
+    <% end %>
+<% end %>
+</table>
+</div>
