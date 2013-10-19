@@ -11,11 +11,6 @@ require 'pry'
   @all_users << User.create(name: name, password: "password", password_confirmation: "password", email: email)
 end
 
-surveys = 50.times do
-  survey_name = Faker::Company.bs
-
-end
-
 
 50.times do 
   Question.create(content: Faker::Company.bs, survey_id: rand(1..50))

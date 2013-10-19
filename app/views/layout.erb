@@ -18,6 +18,12 @@
   <title></title>
 </head>
 <body>
+  <header>
+   <% if session[:user_id] %> 
+    <a href="/logout">Log out</a>
+     <a href="/profile"> <%= session[:name] %></a>
+      <% end %>
+  </header>
   <%= yield %>
 </body>
 </html>
