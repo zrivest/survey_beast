@@ -196,8 +196,6 @@ padding:35px;
   padding: 5px;
   border-right: 1px dotted green;
   font-size: 12px;
-
-
 }
 
 #back_to_surveys {
@@ -207,7 +205,7 @@ padding:35px;
 }
 
 .alex_ads{
- 
+ /*background-image:url('imgres.html');*/
   background-image:url('http://www.colourbox.com/preview/2788642-357871-fried-chicken-legs-as-very-nice-food-background.jpg');
 }
 
@@ -248,4 +246,7 @@ padding:35px;
     padding-bottom: 20px; 
 }
 
+.alex_chicken h1{
+t
+}
 
