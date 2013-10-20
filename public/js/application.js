@@ -1,7 +1,6 @@
 $(document).ready(function() {
   $("#login_form").click(function(e) {
     e.preventDefault();
-    console.log("working?");
     $("#log_in").slideToggle();
   });
 
@@ -16,14 +15,17 @@ $(document).ready(function() {
   });
 
 
-  $("#survey_title_form").submit(function(e){
+        $("a#results").click(function(e){
     e.preventDefault();
-    $.post('/cr eate_new_survey',function(response){
+    var url = this.href;
+    console.log(url);
+    $.get(url,function(response){
       $("#content").hide();
       $("#content").html(response);
       $("#content").show(response);
     });
   });
+
 
 });
 

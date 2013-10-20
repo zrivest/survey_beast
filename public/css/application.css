@@ -17,6 +17,23 @@ header {
   height:50px;
   color:white;
   line-height:25px;
+  /* IE10 Consumer Preview */ 
+background-image: -ms-linear-gradient(top, #474747 0%, #000000 100%);
+
+/* Mozilla Firefox */ 
+background-image: -moz-linear-gradient(top, #474747 0%, #000000 100%);
+
+/* Opera */ 
+background-image: -o-linear-gradient(top, #474747 0%, #000000 100%);
+
+/* Webkit (Safari/Chrome 10) */ 
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #474747), color-stop(1, #000000));
+
+/* Webkit (Chrome 11+) */ 
+background-image: -webkit-linear-gradient(top, #474747 0%, #000000 100%);
+
+/* W3C Markup, IE10 Release Preview */ 
+background-image: linear-gradient(to bottom, #474747 0%, #000000 100%);
 }
 
 header a {
@@ -25,6 +42,7 @@ header a {
   padding:10px 0px;
   float:right;
   padding-left:20px;
+
 }
 
 header a:hover {
@@ -36,12 +54,12 @@ header a:hover {
   font-size:30px;
   letter-spacing:1.5px;
   color:#e8e8e8;
-  text-shadow:0px 0px 5px #e8e8e8;
+  text-shadow:0px 0px 2px #e8e8e8;
   padding-left:0px;
 }
 
 body {
-  background-color:#e8e8e8;
+  background-color:white;
   font-family:sans-serif;
   color:#474747;
 }
@@ -63,24 +81,20 @@ body {
   letter-spacing:2px;
 }
 
-#take_survey{
-  border: solid gray 3px;
-  border-radius: 10px;
-  padding: 10px;
-  position:relative;
-}
 
-#take_survey ol {
+#content ol,ul {
   list-style-type: none;
   margin: 0px;
   padding: 0px;
 
 }
 
+#content input {
+  margin-right:10px;
+}
 
-#take_survey input {
-  margin-right: 10px;
-
+table {
+  background-color:white;
 }
 
 table tr {
@@ -97,7 +111,7 @@ table tr:nth-child(odd) {
 }
 
 table th {
-  background-color:#e8e8e8;
+  background-color:white;
   color:#474747;
   padding:20px 0px ;
 }
@@ -139,6 +153,7 @@ display:none;
   padding:20px;
   border-radius:5px;
   box-shadow:0px 0px 20px grey;
+  position:relative;
 }
 
 #content a{
@@ -150,4 +165,43 @@ display:none;
 #content ul {
   line-height:30px;
 
+}
+
+#big_number {
+  font-size:100px;
+padding:35px;
+  display:inline-block;
+  color:green;
+  font-weight:400;
+  background-color:white;
+  border-radius:5px;
+  padding-bottom:10px;
+}
+
+#survey_list {
+  width:500px;
+}
+
+#survey_list li:nth-child(odd) {
+  background-color:#e8e8e8;
+}
+
+
+
+#survey_list li:nth-child(even) {
+  background-color:#e0e0e0;
+}
+
+.sub_data{
+  padding: 5px;
+  border-right: 1px dotted green;
+  font-size: 12px;
+
+
+}
+
+#back_to_surveys {
+  position:absolute;
+  bottom:10px;
+  right:10px;
 }

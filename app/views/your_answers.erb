@@ -1,7 +1,16 @@
 <div class="container">
-<h3>Your answers</h3>
+  <h1>Your answers</h1>
+
+<div id="content">
+<% count = 0  %>
+  <% @survey.questions.each do |x| %>
+  <% @survey_questions << x.content %>
+  <% end %>
 <% @responses.each do |x| %>
 <% @choices = Choice.find(x.choice_id) %>
-<%= @choices.answer %><br/>
+<h3><%= @survey_questions[count] %></h3>
+Your answer:<span style="color:green"> <%= @choices.answer %></span><br/>
+<% count += 1 %>
 <% end %>
+</div>
 </div>

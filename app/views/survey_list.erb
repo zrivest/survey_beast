@@ -1,11 +1,24 @@
 <div class="container">
-<h1>Welcome back, <%= @user.name %></h1>
+
+<h1>Welcome back, <%= @user.name %></h1><a style="background-color:#474747;border-radius:5px;padding:5px 10px;color:white;" id="create_survey" href="/create_new_survey">Create New Survey</a>
 <h3>Take a survey...</h3>
-<div id="content" >
-  <ul>
+<div id="content">
+  <ul id="survey_list">
 <% @all_surveys.each do |x| %>
-<li><a href="/take_survey/<%= x.id %>"><%= x.name %></a><br/></li>
+  <% @date = x.created_at.to_s %>
+  <% @date.slice!(10..-1) %>
+<li><a href="/take_survey/<%= x.id %>"><%= x.name %></a></li>
+<li>
+  <span class="sub_data">Created by <%= @user = User.find(x.user_id).name %></span>
+  <span class="sub_data">On <%= @date %> </span>
+    <span class="sub_data">Completed <%= @count = CompletedSurvey.where(survey_id: x.id).length %> Times</span>
+
+     
+
+  </li>
 <% end %> 
 </ul>
+
 </div>
+
 </div>

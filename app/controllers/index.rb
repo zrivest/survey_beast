@@ -91,15 +91,19 @@ post '/submit_survey' do
 end
 
 get '/your_answers' do
+  @survey_questions = []
   @user = User.find(session[:user_id])
-
+  @this_survey = CompletedSurvey.last
+  @survey = Survey.find(@this_survey.survey_id)
   @responses = @user.responses.last(3)
   erb :your_answers
 end
 
 get '/results/:survey_id' do
   @survey = Survey.find(params[:survey_id])
+  p @survey
   @number_taken = CompletedSurvey.where(survey_id: @survey.id).length
-  erb :results
+  p @number_taken
+  erb :results, :layout => false
 end
 

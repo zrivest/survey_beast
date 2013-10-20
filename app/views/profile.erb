@@ -2,8 +2,10 @@
   <h1>Your surveys</h1>
   <div id="content">
   <% @user_surveys.each do |x| %>
-  <a href="/results/<%= x.id %>"><%= x.name %></a><br/>
+  <% @date = x.created_at.to_s %>
+  <% @date.slice!(10..-1) %>
+  <a id="results" href="/results/<%= x.id %>"><%= x.name %></a><span style="margin-left:10px;font-size:11px;">Created on <%= @date %></span><br/>
   <% end %><br/>
-  <a id="create_survey" href="/create_new_survey">Create New Survey</a>
+  <a style="background-color:#474747;border-radius:5px;padding:5px 10px;color:white" id="create_survey" href="/create_new_survey">Create New Survey</a>
 </div>
 </div>

@@ -1,6 +1,7 @@
 <div class="container">
  <h1> <%= @survey.name %></h1>
- <form action="/submit_survey" method="POST" id="take_survey" >
+ <div id="content">
+ <form action="/submit_survey" method="POST"  >
 
  <ol>
  <% @survey.questions.each do |question| %>
@@ -16,5 +17,6 @@
 <div style="clear:both">
   </div>
 </form>
+</div>
 </div>
 

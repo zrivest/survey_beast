@@ -1,4 +1,4 @@
-<div class="container">
+
   <h2>New Question for <%= @title %></h2>
   <form action = "/add_question" id="question" method="post">
    <input type="text" name="question" placeholder="Question..."><br/>
@@ -8,4 +8,3 @@
    <input type="text" name="survey_id" style="display:none" value="<%= @survey.id %>"/>
    <input type="submit" /><a href="/finished_survey/<%=@survey.id %>">I'm done</a>
   </form>
-</div>
