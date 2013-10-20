@@ -7,12 +7,39 @@ $(document).ready(function() {
 
     $("#create_survey").click(function(e){
     e.preventDefault();
-    $.get('/create_new_survey',function(response){
-      $("#content").hide();
-      $("#content").html(response);
-      $("#content").show(response);
+    $.get('/alex_ads', function(response){
+        $("#content").hide();
+        $("#content").html(response);
+        $("#content").show(response);
+        
+        $("#go_away").click(function(e){
+        e.preventDefault();
+          $.get('/create_new_survey', function(response){
+           $("#content").hide();
+           $("#content").html(response);
+           $("#content").show(response);
+        });
+      });
     });
-  });
+  }); 
+
+      // $.get('/create_new_survey',function(response){
+      //   $("#content").hide();
+      //   $("#content").html(response);
+      //   $("#content").show(response);
+      // });
+  //   });
+  // });
+
+  // $("#go_away").click(function(e){
+  //   e.preventDefault();
+
+  //   $.get('/create_new_survey',function(response){
+  //     $("#content").hide();
+  //     $("#content").html(response);
+  //     $("#content").show(response);
+  //   });
+  // });    
 
 
         $("a#results").click(function(e){

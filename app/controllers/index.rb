@@ -107,3 +107,13 @@ get '/results/:survey_id' do
   erb :results, :layout => false
 end
 
+get '/alex_ads' do
+
+  erb :alex_ads,  :layout => false
+end
+
+
+get '/alex_chicken' do
+
+  erb :alex_chicken, :layout => false
+end
