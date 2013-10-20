@@ -21,7 +21,7 @@ $(document).ready(function() {
         });
       });
     });
-  }); 
+  });
 
       // $.get('/create_new_survey',function(response){
       //   $("#content").hide();
